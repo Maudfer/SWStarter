@@ -1,0 +1,25 @@
+QUESTIONS:
+
+1. What are you hoping to find in your next position that would make us the right next step
+in your career?
+A: I'm always looking for places with a good Engineering culture, but also that hold Product at the center of the ecosystem. As someone who's been at multiple start ups early on in my career, I've learned to pay extra attention to the product, and I honestly felt this same energy when searching about LawnStarter and talking to you guys. I think the product is super interesting, and I'm eager to contribute to a creating a great experience for our users. I've worked with customer-facing products before (namely at Crunchyroll, and various startups), and it's one of my personal favorites!
+
+2. What have you learned so far about us that has excited you?
+A: Well, like I said above, the stability of a mature startup backed by strong funding combined with a close‑knit environment is very appealing to me. I’m especially interested in helping local businesses thrive, and the emphasis you place on team quality made LawnStarter stand out to me.
+
+3. Have you worked in an environment where developers own delivering features all the way to production? We have QA (Quality Assurance) and a Product Operations team, however, they exist to provide support to engineers. Are you comfortable going to a place where the quality buck stops with the engineers and you have the ability to deploy and observe your own code in production?
+A: Yes, for most of my career. I've also acted as PO, DRI (Directly Responsible Individual) and Tech Lead before, often working directly with non-technical stakeholders and being the primery force to driving the initiatives I owned forward. I'm well acquainted with it.
+
+4. What is the next technology or subject you are hoping to learn about?
+A: Well, LLMs are all the rage right now, haha. But I also am always looking to deepen my system design expertise, I like the idea of being very good and very specialized at coming up with clever solutions to complex scalability and resource-heavy scenarios.
+
+Once you have completed this exercise, please let us know the following so we can continue to
+work on our continuous improvement mindset:
+
+1. What parts of this did you enjoy?
+A: I liked designing the project! It was cool to see it take shape and try to match the spec/mockups as closely as possible. It had some fun and interesting challenges.
+
+2. What parts of this did you dislike?
+A: The SWAPI API didn’t return the expected film list for people, going against its own Documentation, so I had to create an workaround, I basically had to fetch all films and match them manually. I've detailed it on a TODO in my backend code, if you want to search for it. I don't believe this was intended. But if it was, I'm happy to have found a clever solution, even if it's not elegant.
+
+
