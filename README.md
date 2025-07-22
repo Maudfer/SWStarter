@@ -10,6 +10,7 @@ Web app - http://localhost:3000/
 REST API - http://localhost:4000/
 Stats - http://localhost:4000/stats
 ```
+Please give it a second the first time you click each button/link in dev mode! NextJS takes some navigating to build cache.
 
 # SWStarter Exercise - Mauricio Fernandes
 
@@ -41,10 +42,10 @@ ever grows beyond a toy project. The trade‑off is a little extra moving pieces
 during development, though Compose smooths most of that over. In the end the
 pros of clarity and flexibility outweighed the added complexity for me.
 
-Using Redis at this stage might seem heavy, yet it let me play with background
-jobs and caching without committing to a full database. If we swap it for
-something else later the rest of the code won't need much adjusting, which felt
-like a good compromise.
+Using Redis at this stage might seem heavy, but I didn't want to keep hitting the 
+public API without need, and it let me play with background jobs and caching without 
+committing to a full database. If we swap it for something else later the rest of the 
+code won't need much adjusting, which felt like a good compromise.
 
 ## Project Structure
 

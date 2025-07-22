@@ -49,9 +49,11 @@ export default function ResultsList({ results, type, status }: Props) {
 
   return (
     <div className="card results-card">
-      <h2 className="card-title">Results</h2>
-      <hr className="card-divider" />
-      {content}
+      <div className="inner-card">
+        <h2 className="card-title">Results</h2>
+        <hr className="card-divider" />
+        {content}
+      </div>
     </div>
   )
 }

@@ -5,7 +5,9 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #e5e5e5;
-  background: var(--background);
+  background: #fff;
+  position: relative;
+  box-shadow: 0.5px 0.5px 4px 0 #8484844f;
 }
 
 .logo {
@@ -30,18 +32,23 @@
 
 /* ─────────  Cards  ───────── */
 .card {
-  background: #ffffff;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   padding: 1.5rem;
+  border-radius: 3px;
+  box-shadow: 0.5px 0.5px 4px 0 #8484844f;
+  border: solid 0.5px #8484844f;
+  background-color: #fff;
+  max-height: fit-content;
+}
+
+.card .inner-card {
+  position: relative;
+  margin: 0 auto;
 }
 
 .card-title {
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin: 0 20px 10px 0;
-  font-size: 1rem;
   font-weight: 600;
   color: #383838;
 
@@ -50,7 +57,7 @@
 .card-divider {
   border: 0;
   border-top: 1px solid #e5e5e5;
-  margin: 0 -1.5rem 1.5rem;
+  margin: 0.5rem 0rem;
 }
 
 /* ─────────  Search form  ───────── */
@@ -66,43 +73,92 @@
 }
 
 .search-option {
-  display: flex;
+  position: relative;
   align-items: center;
-  gap: 0.25rem;
-  font-weight: 500;
+  gap: .25rem;
+  font-weight: 600;
+  display: flex;
+  font-size: 0.75rem;
+  padding-left: 18px;
 }
 
-/* Safari / Firefox radio style */
-.search-option input[type='radio'] {
-  accent-color: #0d6efd;
+.search-option input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
+
+.checkmark {
+  background-color: #eee;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  top: 2px;
+  left: 0;
+}
+
+.search-option:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+.search-option input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+.search-option input~.checkmark:after {
+  content: "";
+  background-color: #fff;
+  width: 3px;
+  height: 3px;
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.search-option input:checked~.checkmark:after {
+  display: block;
+}
+
+.search-option .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+}
+
 
 .query-input {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #ccc;
+  border: 1px inset #5b5b5b;
   border-radius: 4px;
+  padding: .5rem .75rem;
 }
 
 /* ─────────  Search‑button state  ───────── */
 .search-button {
+  letter-spacing: .5px;
   width: 100%;
-  padding: 0.6rem 0.75rem;
-  border: 0;
-  border-radius: 4px;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: background 0.2s;
+  font-size: 0.8rem;
+  transition: background .2s;
+  margin: 0.5rem 0 0;
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
+  border: solid 0.5px #0ab463;
+  background-color: #0ab463;
+  color: #fff;
 }
 
 .search-button:disabled {
-  background: #bdbdbd;
   cursor: not-allowed;
   color: #fff;
-}
-
-.search-button:not(:disabled) {
-  background: #00b050;
-  color: #fff;
+  background: #c4c4c4;
+  border: solid 0.5px #c4c4c4;
 }
 
 .search-button:not(:disabled):hover {
@@ -114,6 +170,12 @@
   color: #777;
   text-align: center;
   line-height: 1.4;
+  min-height: 450px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .results-list {
@@ -125,10 +187,17 @@
   margin-bottom: 0.5rem;
 }
 
-.result-item a {
-  font-weight: 500;
-  text-decoration: underline;
+.results-card {
+  max-height: 100%;
+  min-height: 450px;
 }
+
+.results-card>.card-title {
+  color: #000;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
 
 /* ─────────  Result rows  ───────── */
 .result-item {
@@ -148,14 +217,13 @@
 }
 
 .details-button {
-  background: #00b050;
   color: #fff;
-  padding: 0.25rem 1rem;
-  border-radius: 9999px;
-  /* pill */
-  font-size: 0.75rem;
-  font-weight: 600;
   text-transform: uppercase;
+  background: #0ab463;
+  border-radius: 9999px;
+  padding: .6rem 1.5rem;
+  font-size: .75rem;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -163,10 +231,26 @@
   filter: brightness(0.9);
 }
 
+.detail-list a {
+  color: #0094ff;
+}
+
 /* ─────────  Person card  ───────── */
 .person-card {
-  max-width: 560px;
+  width: 70vw;
+  min-width: 500px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+.person-card .inner-card {
+  margin: 0 auto;
+  min-height: 40vh;
+  position: relative;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .person-name {
@@ -177,7 +261,7 @@
 
 .person-grid {
   display: flex;
-  gap: 2rem;
+  gap: 5%;
   flex-wrap: wrap;
 }
 
@@ -187,7 +271,7 @@
 
 .section-title {
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.25rem;
 }
 
@@ -207,7 +291,7 @@
 .back-button {
   display: inline-block;
   margin-top: 2rem;
-  background: #00b050;
+  background: #0ab463;
   color: #fff;
   padding: 0.5rem 1.5rem;
   border-radius: 9999px;
@@ -223,8 +307,20 @@
 
 /* ─────────  Movie card  ───────── */
 .movie-card {
-  max-width: 560px;
+  width: 70vw;
+  min-width: 500px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+.movie-card .inner-card {
+  margin: 0 auto;
+  min-height: 40vh;
+  position: relative;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .movie-title {
@@ -235,7 +331,7 @@
 
 .movie-grid {
   display: flex;
-  gap: 2rem;
+  gap: 5%;
   flex-wrap: wrap;
 }
 
