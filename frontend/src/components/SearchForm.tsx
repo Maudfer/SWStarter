@@ -2,13 +2,21 @@
 import { useState } from 'react'
 
 type Props = {
+  status: 'empty' | 'typing' | 'loading' | 'populated'
+  type: 'people' | 'movies'
   onSubmit: (q: string, type: 'people' | 'movies') => void
   onQueryChange?: (v: string) => void
+  onTypeChange?: (t: 'people' | 'movies') => void
 }
 
-export default function SearchForm({ onSubmit, onQueryChange }: Props) {
+export default function SearchForm({
+  status,
+  type,
+  onSubmit,
+  onQueryChange,
+  onTypeChange,
+}: Props) {
   const [query, setQuery] = useState('')
-  const [type, setType] = useState<'people' | 'movies'>('people')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -16,7 +24,8 @@ export default function SearchForm({ onSubmit, onQueryChange }: Props) {
     onSubmit(query.trim(), type)
   }
 
-  const isDisabled = query.trim() === ''
+  const isDisabled = query.trim() === '' || status === 'loading'
+  const buttonLabel = status === 'loading' ? 'SEARCHING…' : 'SEARCH'
 
   return (
     <div className="card search-card">
@@ -30,7 +39,7 @@ export default function SearchForm({ onSubmit, onQueryChange }: Props) {
               name="type"
               value="people"
               checked={type === 'people'}
-              onChange={() => setType('people')}
+              onChange={() => onTypeChange?.('people')}
             />
             People
           </label>
@@ -40,7 +49,7 @@ export default function SearchForm({ onSubmit, onQueryChange }: Props) {
               name="type"
               value="movies"
               checked={type === 'movies'}
-              onChange={() => setType('movies')}
+              onChange={() => onTypeChange?.('movies')}
             />
             Movies
           </label>
@@ -56,12 +65,8 @@ export default function SearchForm({ onSubmit, onQueryChange }: Props) {
           placeholder="e.g. Chewbacca, Yoda, Boba Fett"
         />
 
-        <button
-          type="submit"
-          className="search-button"
-          disabled={isDisabled}
-        >
-          SEARCH
+        <button type="submit" className="search-button" disabled={isDisabled}>
+          {buttonLabel}
         </button>
       </form>
     </div>

@@ -40,7 +40,11 @@
 .card-title {
   margin-bottom: 1rem;
   font-size: 1rem;
+  margin: 0 20px 10px 0;
+  font-size: 1rem;
   font-weight: 600;
+  color: #383838;
+
 }
 
 .card-divider {
@@ -244,4 +248,3 @@
   line-height: 1.4;
   margin-bottom: 0.75rem;
 }
-

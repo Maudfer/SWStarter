@@ -4,6 +4,13 @@
 npm run dev
 ```
 
+Default addresses:
+```bash
+Web app - http://localhost:3000/
+REST API - http://localhost:4000/
+Stats - http://localhost:4000/stats
+```
+
 # SWStarter Exercise - Mauricio Fernandes
 
 This repository contains a small web application split into a Next.js

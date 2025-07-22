@@ -3,12 +3,12 @@ import ResultsList from '../ResultsList'
 import type { PersonSummary } from '../../types'
 
 describe('ResultsList', () => {
-  test('shows loading text', () => {
+  test('shows searching text while loading', () => {
     const { getByText } = render(
       <ResultsList results={[]} type="people" status="loading" />
     )
-    // Matches both “Loading…” and “Loading...”
-    expect(getByText(/Loading/i)).toBeInTheDocument()
+    // Matches “Searching…” or any case variant
+    expect(getByText(/Searching/i)).toBeInTheDocument()
   })
 
   test('renders results list', () => {

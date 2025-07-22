@@ -4,22 +4,26 @@ import SearchForm from '../SearchForm'
 describe('SearchForm', () => {
   test('calls onSubmit with query and default type', () => {
     const onSubmit = jest.fn()
-    const { getByRole } = render(<SearchForm onSubmit={onSubmit} />)
+    const { getByRole } = render(
+      <SearchForm
+        status="empty"
+        type="people"
+        onSubmit={onSubmit}
+      />
+    )
 
-    const input = getByRole('textbox')
-    const button = getByRole('button', { name: /search/i })
-
-    fireEvent.change(input, { target: { value: 'luke' } })
-    fireEvent.click(button)
+    fireEvent.change(getByRole('textbox'), { target: { value: 'luke' } })
+    fireEvent.click(getByRole('button', { name: /search/i }))
 
     expect(onSubmit).toHaveBeenCalledWith('luke', 'people')
   })
 
-  test('allows selecting movie type', () => {
+  test('submits with movie type', () => {
     const onSubmit = jest.fn()
-    const { getByLabelText, getByRole } = render(<SearchForm onSubmit={onSubmit} />)
+    const { getByRole } = render(
+      <SearchForm status="empty" type="movies" onSubmit={onSubmit} />
+    )
 
-    fireEvent.click(getByLabelText('Movies'))
     fireEvent.change(getByRole('textbox'), { target: { value: 'hope' } })
     fireEvent.click(getByRole('button', { name: /search/i }))
 

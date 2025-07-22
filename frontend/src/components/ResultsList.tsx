@@ -13,13 +13,13 @@ export default function ResultsList({ results, type, status }: Props) {
   if (status === 'empty') {
     content = (
       <p className="results-placeholder">
-        There are zero matches.<br />Use the form to search for People or Movies.
+        There are zero matches.
+        <br />
+        Use the form to search for People or Movies.
       </p>
     )
-  } else if (status === 'typing') {
-    content = <p className="results-placeholder">Keep typing…</p>
-  } else if (status === 'loading') {
-    content = <p className="results-placeholder">Loading…</p>
+  } else if (status === 'typing' || status === 'loading') {
+    content = <p className="results-placeholder">Searching…</p>
   } else if (!results.length) {
     content = <p className="results-placeholder">No results found.</p>
   } else {
