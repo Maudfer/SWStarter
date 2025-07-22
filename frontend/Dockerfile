@@ -9,7 +9,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm test && npm run build && npm prune --production
+RUN npm test && npm run build && npm prune
 
 # Copy all the files and run next
 FROM node:20-alpine AS runner

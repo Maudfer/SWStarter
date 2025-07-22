@@ -3,6 +3,10 @@ import { cached } from './cache'
 
 const BASE = 'https://swapi.tech/api'
 
+function normalizePeopleUrl(url: string) {
+  return url.replace(/^https:\/\/(www\.)?swapi\.tech\/api\/people\//, '')
+}
+
 async function fetchJson(url: string, attempt = 0): Promise<any> {
   const res = await request(url)
   if (res.statusCode === 429 && attempt < 3) {
@@ -44,12 +48,32 @@ export async function getPerson(id: string) {
     const data = await fetchJson(url)
     const props = data.result?.properties
     if (!props) return null
-    if (Array.isArray(props.films)) {
-      props.films = props.films.map((f: string) => f.split('/').filter(Boolean).pop())
-    }
+
+    // TODO: 
+    // swapi.tech no longer returns the `films` array under /people/:id,
+    // even though its documentation says it does, and it used to (I checked it with https://web.archive.org/).
+    // I couldn't find out if this is a recent bug or design change in the API.
+    // As a temporary workaround, we hydrate the films list manually by:
+    // - Fetching all films
+    // - Checking which ones list this person in their `characters` array
+
+    const normalize = (url: string) =>
+      url.replace(/^https:\/\/(www\.)?swapi\.tech\/api\/people\//, '')
+
+    const filmsData = await fetchJson(`${BASE}/films`)
+    const allFilms = Array.isArray(filmsData.result) ? filmsData.result : []
+
+    const filmUrls: string[] = allFilms
+      .filter((film: any) =>
+        film.properties?.characters?.some((url: string) => normalize(url) === id)
+      )
+      .map((film: any) => film.properties.url)
+
+    props.films = filmUrls
     return props
   })
 }
+
 
 export async function getMovie(id: string) {
   return cached(`movie:${id}`, async () => {

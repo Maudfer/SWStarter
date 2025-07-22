@@ -7,7 +7,7 @@
     "install:backend": "npm ci --prefix backend",
     "clean": "rm -rf frontend/node_modules backend/node_modules frontend/.next backend/dist",
     "build": "docker-compose build",
-    "dev": "docker-compose --profile with-redis up --build",
+    "dev": "docker-compose --profile with-redis up --build --watch",
     "test": "docker-compose build backend frontend"
   }
 }

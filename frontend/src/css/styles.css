@@ -12,7 +12,6 @@
   font-size: 1.25rem;
   font-weight: 600;
   color: #14a44d;
-  /* green */
 }
 
 .app-wrapper {
@@ -69,7 +68,7 @@
   font-weight: 500;
 }
 
-/* Safari / Firefox radio tint */
+/* Safari / Firefox radio style */
 .search-option input[type='radio'] {
   accent-color: #0d6efd;
 }
@@ -80,16 +79,30 @@
   border-radius: 4px;
 }
 
+/* ─────────  Search‑button state  ───────── */
 .search-button {
   width: 100%;
   padding: 0.6rem 0.75rem;
-  background: #bdbdbd;
   border: 0;
   border-radius: 4px;
-  color: #fff;
   font-weight: 600;
   letter-spacing: 0.5px;
-  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-button:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+  color: #fff;
+}
+
+.search-button:not(:disabled) {
+  background: #00b050;
+  color: #fff;
+}
+
+.search-button:not(:disabled):hover {
+  filter: brightness(0.9);
 }
 
 /* ─────────  Results  ───────── */
@@ -113,29 +126,6 @@
   text-decoration: underline;
 }
 
-/* ─────────  Search‑button state  ───────── */
-.search-button {
-  width: 100%;
-  padding: 0.6rem 0.75rem;
-  border: 0;
-  border-radius: 4px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: background 0.2s;
-}
-.search-button:disabled {
-  background: #bdbdbd;
-  cursor: not-allowed;
-  color: #fff;
-}
-.search-button:not(:disabled) {
-  background: #00b050;
-  color: #fff;
-}
-.search-button:not(:disabled):hover {
-  filter: brightness(0.9);
-}
-
 /* ─────────  Result rows  ───────── */
 .result-item {
   display: flex;
@@ -144,22 +134,114 @@
   padding: 0.75rem 0;
   border-bottom: 1px solid #e5e5e5;
 }
+
 .result-item:last-child {
   border-bottom: none;
 }
+
 .result-name {
   font-weight: 500;
 }
+
 .details-button {
   background: #00b050;
   color: #fff;
   padding: 0.25rem 1rem;
-  border-radius: 9999px; /* pill */
+  border-radius: 9999px;
+  /* pill */
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
 }
+
 .details-button:hover {
   filter: brightness(0.9);
 }
+
+/* ─────────  Person card  ───────── */
+.person-card {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.person-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.person-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.person-col {
+  flex: 1 1 220px;
+}
+
+.section-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.section-divider {
+  border: 0;
+  border-top: 1px solid #e5e5e5;
+  margin-bottom: 0.75rem;
+}
+
+.detail-list {
+  list-style: none;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 2rem;
+  background: #00b050;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  filter: brightness(0.9);
+}
+
+/* ─────────  Movie card  ───────── */
+.movie-card {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.movie-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.movie-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.movie-col {
+  flex: 1 1 220px;
+}
+
+.crawl-paragraph {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+

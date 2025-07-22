@@ -1,3 +1,9 @@
+### QuickStart with Docker (more details further below):
+
+```bash
+npm run dev
+```
+
 # SWStarter Exercise - Mauricio Fernandes
 
 This repository contains a small web application split into a Next.js
@@ -46,7 +52,7 @@ Use the helper scripts defined in the root `package.json`:
 # install dependencies for both services
 npm run install
 
-# build and run containers with live reload
+# build and run all containers
 npm run dev
 ```
 

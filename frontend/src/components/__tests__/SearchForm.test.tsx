@@ -6,8 +6,8 @@ describe('SearchForm', () => {
     const onSubmit = jest.fn()
     const { getByRole } = render(<SearchForm onSubmit={onSubmit} />)
 
-    const input = getByRole('textbox')                       //  ✅ agnostic to placeholder text
-    const button = getByRole('button', { name: /search/i })   //  ✅ matches “SEARCH” or “Search”
+    const input = getByRole('textbox')
+    const button = getByRole('button', { name: /search/i })
 
     fireEvent.change(input, { target: { value: 'luke' } })
     fireEvent.click(button)

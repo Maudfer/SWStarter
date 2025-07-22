@@ -32,13 +32,19 @@ test('search people', async () => {
 
 test('get person caches result', async () => {
   mockRequest.mockClear()
+
   const res1 = await supertest(app.server).get('/people/1')
   expect(res1.status).toBe(200)
   expect(res1.body.name).toBe('Luke')
 
   const res2 = await supertest(app.server).get('/people/1')
   expect(res2.status).toBe(200)
-  expect(mockRequest).toHaveBeenCalledTimes(1)
+
+  // Count only how many times /people/1 was requested
+  const peopleCalls = mockRequest.mock.calls.filter(([url]) =>
+    url.includes('/people/1')
+  )
+  expect(peopleCalls).toHaveLength(1)
 })
 
 test('get movie', async () => {
